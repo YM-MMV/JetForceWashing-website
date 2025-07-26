@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JetForce Washing</title>
+    <!-- Import Inter font with light weights -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Phosphor Icons web distribution (loads only once and gives access to the light weight via CSS classes) -->
+    <!-- The script below injects the proper font files into the document head. -->
+    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Sticky top navigation bar -->
+    <nav id="navbar" class="navbar">
+      <div class="nav-inner">
+        <a href="#home" class="logo-wrapper" aria-label="JetForce Washing home">
+          <img src="assets/logo.png" alt="JetForce Washing logo" class="logo" />
+        </a>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile drawer menu -->
+    <div id="drawer" class="drawer">
+      <ul class="drawer-links">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+
+    <main>
+      <!-- Hero section -->
+      <section id="home" class="section hero">
+        <div class="hero-content" data-animate>
+          <h1 class="hero-title">JetForce Washing</h1>
+          <p class="subtitle">West London’s #1 Pressure Washing Service</p>
+          <p class="tagline">Fast, reliable & affordable</p>
+          <a href="#contact" class="cta-button">Get a Free Quote</a>
+        </div>
+      </section>
+
+      <!-- About section with before/after images -->
+      <section id="about" class="section about">
+        <h2 class="section-title" data-animate>About</h2>
+        <p class="about-text" data-animate>
+          We are dedicated to revitalising your property’s exterior surfaces with our
+          top‑of‑the‑line jet washing solutions. Using advanced equipment and eco‑friendly
+          techniques, we restore driveways, patios, brickwork and more to their
+          original beauty.
+        </p>
+        <div class="before-after" data-animate>
+          <div class="card">
+            <span class="card-label">Before</span>
+            <img src="assets/before.jpg" alt="Before cleaning" />
+          </div>
+          <div class="card">
+            <span class="card-label">After</span>
+            <img src="assets/after.jpg" alt="After cleaning" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact section -->
+      <section id="contact" class="section contact">
+        <h2 class="section-title" data-animate>Contact Us</h2>
+        <div class="contact-details" data-animate>
+          <div class="contact-item">
+            <!-- Phone icon (Phosphor light weight) -->
+            <i class="ph-light ph-phone"></i>
+            <a href="tel:07427982678">07427982678</a>
+          </div>
+          <div class="contact-item">
+            <!-- Envelope icon (Phosphor light weight) -->
+            <i class="ph-light ph-envelope"></i>
+            <a href="mailto:info@jetforcewashing.com">info@jetforcewashing.com</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" data-animate>
+      <p>© 2025 JetForce Washing. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
