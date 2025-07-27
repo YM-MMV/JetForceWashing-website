@@ -16,10 +16,33 @@
 html,
 body {
   height: 100%;
-  font-family: 'Inter', sans-serif;
+  /* Use Urbanist for a refined, contemporary feel */
+  font-family: 'Urbanist', sans-serif;
   background: linear-gradient(180deg, #050c1a 0%, #0a172f 100%);
   color: #f3f5f7;
   scroll-behavior: smooth;
+}
+
+/* Gradient overlay on the body to smooth the transition between
+   sections.  It darkens the lower portion of the viewport slightly,
+   blending the aurora glow into the page background so that no sharp
+   horizontal lines are visible when scrolling.  The overlay sits
+   above the star canvas but beneath the content thanks to its
+   z-index.  Pointer-events are disabled so it doesn't interfere
+   with user interactions. */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  /* A transparent-to-dark gradient: the top remains clear while the
+     bottom gradually darkens to the body colour.  Adjust the final
+     opacity to control the strength of the blend. */
+  background: linear-gradient(to bottom, rgba(5, 12, 26, 0) 60%, rgba(5, 12, 26, 0.6) 100%);
+  z-index: 1;
 }
 
 body {
@@ -63,6 +86,88 @@ img {
   height: 48px;
   width: auto;
   filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.5));
+}
+
+/* Sparkles wrapper: positions the canvas behind the text for the hero
+   heading.  The canvas fills the wrapper and allows sparkles to
+   animate beneath the letters. */
+/* Remove legacy sparkle wrapper definitions as the starfield is now
+   implemented globally on a fixed canvas. */
+
+/* Global starfield canvas styling */
+#stars-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  pointer-events: none;
+  /* Raise stars above the aurora glow.  Combined with the screen blend
+     mode this allows both the glow and the stars to be visible. */
+  z-index: 0;
+  /* Slight blur to soften star edges and blend them into the background */
+  filter: blur(0.5px);
+  /* Remove blend mode to allow the stars to sit on top of the
+     background without additive blending.  This helps minimise any
+     colour shift between sections caused by the screen blend. */
+}
+
+
+/* Holographic card effect */
+.holo-card {
+  position: relative;
+  overflow: hidden;
+  perspective: 800px;
+  transform-style: preserve-3d;
+  transition: transform 0.2s ease;
+}
+
+/* Provide a fallback 3D lift on hover for environments where JavaScript
+   events might not fire.  When the user hovers over a card the
+   holographic gradient comes to life and the card gently tilts and
+   scales, giving it a premium, interactive feel. */
+.holo-card:hover {
+  transform: perspective(800px) rotateX(12deg) rotateY(-12deg) scale(1.05);
+}
+.holo-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  /* Moving gradient creates the holographic shimmer.  The mix-blend-mode
+     lightens the underlying image, giving a shiny appearance. */
+  /* Use a CSS variable to rotate the gradient based on pointer position.  A
+     fallback angle of 45deg is provided for browsers that don't support
+     CSS variables or before the card has been hovered. */
+  background: linear-gradient(
+    var(--gradient-angle, 45deg),
+    rgba(255, 0, 255, 0.25),
+    rgba(0, 188, 212, 0.2),
+    rgba(255, 255, 255, 0.1)
+  );
+  animation: gradientMove 5s linear infinite;
+  mix-blend-mode: screen;
+  z-index: 3;
+  pointer-events: none;
+  border-radius: inherit;
+}
+.holo-card img {
+  position: relative;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+@keyframes gradientMove {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 /* Navigation links */
@@ -182,12 +287,61 @@ img {
   justify-content: center;
   min-height: calc(100vh - 70px);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Aurora glow effect behind the hero content inspired by
+   futurastic hero section【470727655141461†screenshot】.  Two radial
+   gradients drift slowly to create a soft, colourful glow. */
+.hero::before,
+.hero::after {
+  content: '';
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  top: -15%;
+  left: -15%;
+  pointer-events: none;
+  filter: blur(120px);
+  /* Keep the glow subtle so it doesn't create a harsh boundary with
+     the sections below. */
+  /* Lower the glow opacity slightly to avoid a noticeable rectangle
+     where the hero meets the rest of the page.  A subtle glow still
+     adds interest without overpowering the content. */
+  opacity: 0.15;
+  /* Fade the aurora glow toward the bottom of the hero using a
+     vertical mask.  Starting the fade around halfway down the element
+     helps blend the glow into the page background without leaving
+     a visible boundary. */
+  -webkit-mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0) 100%);
+  animation: auroraMove 12s linear infinite;
+}
+
+.hero::before {
+  background: radial-gradient(circle at 30% 70%, rgba(0, 188, 212, 0.6), rgba(255, 255, 255, 0) 70%);
+}
+
+.hero::after {
+  background: radial-gradient(circle at 70% 30%, rgba(255, 0, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  animation-direction: reverse;
+}
+
+@keyframes auroraMove {
+  0%, 100% {
+    transform: translate3d(0, 0, 0);
+  }
+  50% {
+    transform: translate3d(15%, -15%, 0);
+  }
 }
 
 .hero-title {
   font-size: clamp(2.5rem, 6vw, 4rem);
-  font-weight: 400;
-  letter-spacing: 0.1em;
+  /* Increase weight for a stronger presence */
+  font-weight: 700;
+  letter-spacing: 0.05em;
   margin-bottom: 0.8rem;
 }
 
@@ -200,12 +354,14 @@ img {
 
 /* Small tagline accent below subtitle */
 .tagline {
-  font-size: 1rem;
-  font-weight: 300;
+  /* Increase the tagline size so the morphing descriptors are more prominent */
+  font-size: 1.8rem;
+  font-weight: 500;
   opacity: 0.7;
   color: #00bcd4;
-  margin-bottom: 2.5rem;
+  margin-bottom: 2.8rem;
   letter-spacing: 0.04em;
+  transition: opacity 0.5s ease;
 }
 
 /* Call to action button */
@@ -251,6 +407,34 @@ img {
   justify-content: center;
   gap: 2rem;
   flex-wrap: wrap;
+}
+
+/* Services list within the About section */
+.services-list {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 2rem;
+  margin: 2rem auto 3rem;
+  padding: 0;
+  list-style: none;
+  max-width: 800px;
+}
+
+.services-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 1.1rem;
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  color: #f3f5f7;
+  opacity: 0.9;
+}
+
+.services-list i {
+  font-size: 1.2rem;
+  color: #00bcd4;
 }
 
 .card {

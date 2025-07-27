@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta name="description" content="JetForce Washing – Professional power washing in West London. Driveways, patios, and more.">
-    <meta name="robots" content="index, follow">
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JetForce Washing</title>
-    <!-- Import Inter font with light weights -->
+    <!-- Import Urbanist font for a refined, contemporary feel (various weights) -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <!-- Site favicon -->
+    <link rel="icon" type="image/png" href="assets/favicon.png" />
     <!-- Phosphor Icons web distribution (loads only once and gives access to the light weight via CSS classes) -->
     <!-- The script below injects the proper font files into the document head. -->
     <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles_override.css">
   </head>
   <body>
+    <!-- Full‑screen starry background canvas.  Placed early in the body so it sits
+         behind all content.  It will be animated in script.js to create a
+         twinkling starfield reminiscent of the futurastic hero example. -->
+    <canvas id="stars-bg" aria-hidden="true"></canvas>
+
     <!-- Sticky top navigation bar -->
     <nav id="navbar" class="navbar">
       <div class="nav-inner">
@@ -50,9 +55,11 @@
       <!-- Hero section -->
       <section id="home" class="section hero">
         <div class="hero-content" data-animate>
+          <!-- Prominent site title; the bold weight emphasises the brand name. -->
           <h1 class="hero-title">JetForce Washing</h1>
-          <p class="subtitle">West London’s #1 Pressure Washing Service</p>
-          <p class="tagline">Fast, reliable & affordable</p>
+          <!-- The subtitle has been removed per updated requirements. -->
+          <!-- Tagline will morph through three descriptors (Fast, Reliable, Affordable) via JavaScript -->
+          <p class="tagline" id="morph-tagline">Fast</p>
           <a href="#contact" class="cta-button">Get a Free Quote</a>
         </div>
       </section>
@@ -66,12 +73,19 @@
           techniques, we restore driveways, patios, brickwork and more to their
           original beauty.
         </p>
+        <ul class="services-list" data-animate>
+          <li><i class="ph-light ph-check-circle"></i><span>Patios</span></li>
+          <li><i class="ph-light ph-check-circle"></i><span>Driveways</span></li>
+          <li><i class="ph-light ph-check-circle"></i><span>Walls & Fencing</span></li>
+          <li><i class="ph-light ph-check-circle"></i><span>Commercial & Residential</span></li>
+        </ul>
+
         <div class="before-after" data-animate>
-          <div class="card">
+          <div class="card holo-card">
             <span class="card-label">Before</span>
             <img src="assets/before.jpg" alt="Before cleaning" />
           </div>
-          <div class="card">
+          <div class="card holo-card">
             <span class="card-label">After</span>
             <img src="assets/after.jpg" alt="After cleaning" />
           </div>

@@ -1,0 +1,51 @@
+/*
+ * JetForce Washing custom overrides
+ *
+ * This stylesheet provides targeted fixes and enhancements on top of
+ * the existing styles.css. By appending these rules after the main
+ * stylesheet, we can easily override specific properties without
+ * touching the original file contents. The goal is to eliminate
+ * visible divider lines and make minor visual improvements for a
+ * smoother, more polished appearance.
+ */
+
+/* Remove the faint separator line under the navbar so the dark
+   background blends seamlessly into the hero section */
+.navbar {
+  border-bottom: none !important;
+}
+
+/* Remove card borders to avoid visible edges against dark backgrounds */
+.card {
+  border: none !important;
+}
+
+/* Hide any horizontal rule elements that might appear between sections */
+hr {
+  display: none !important;
+  border: 0;
+}
+
+/* Improve readability of hero text with a subtle glow */
+.hero-title {
+  text-shadow: 0 0 6px rgba(0, 0, 0, 0.5);
+}
+
+/* Increase subtitle opacity for better contrast */
+.subtitle,
+.tagline {
+  opacity: 0.85 !important;
+}
+
+/* Slightly enlarge icons in the contact section for better accessibility */
+.contact-item i {
+  font-size: 1.6rem;
+}
+
+/* Ensure backgrounds cover their containers without repeating
+   and avoid seams on very wide screens */
+body {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
