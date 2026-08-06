@@ -1,119 +1,497 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>JetForce Washing</title>
-    <!-- Import Urbanist font for a refined, contemporary feel (various weights) -->
-    <link
-      href="https://fonts.googleapis.com/css2?family=Urbanist:wght@300;400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
-    <!-- Site favicon -->
-    <link rel="icon" type="image/png" href="assets/favicon.png" />
-    <!-- Phosphor Icons web distribution (loads only once and gives access to the light weight via CSS classes) -->
-    <!-- The script below injects the proper font files into the document head. -->
-    <script src="https://cdn.jsdelivr.net/npm/@phosphor-icons/web@2.1.2"></script>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="stylesheet" href="styles_override.css">
-  </head>
-  <body>
-    <!-- Full‑screen starry background canvas.  Placed early in the body so it sits
-         behind all content.  It will be animated in script.js to create a
-         twinkling starfield reminiscent of the futurastic hero example. -->
-    <canvas id="stars-bg" aria-hidden="true"></canvas>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Sticky top navigation bar -->
-    <nav id="navbar" class="navbar">
-      <div class="nav-inner">
-        <a href="#home" class="logo-wrapper" aria-label="JetForce Washing home">
-          <img src="assets/logo.png" alt="JetForce Washing logo" class="logo" />
-        </a>
-        <ul class="nav-links">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <button id="hamburger" class="hamburger" aria-label="Toggle menu">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </div>
+<title>JetForce Washing | Driveway &amp; Patio Cleaning in West London</title>
+<meta name="description" content="Professional pressure washing across West London. Driveways, patios, walls and fencing cleaned, plus resanding and sealing. Free, no-obligation quotes — call 07427 982678.">
+<link rel="canonical" href="https://www.jetforcewashing.com/">
+<meta name="theme-color" content="#0b1b2b">
+
+<!-- Scroll-reveal is opt-in: without JS the .js class is never added and all
+     content stays visible, so the page never depends on the script to be readable. -->
+<script>document.documentElement.classList.add('js');</script>
+
+<!-- Social sharing -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="JetForce Washing">
+<meta property="og:title" content="JetForce Washing | Driveway &amp; Patio Cleaning in West London">
+<meta property="og:description" content="Professional pressure washing across West London. Driveways, patios, walls and fencing cleaned, plus resanding and sealing. Free, no-obligation quotes.">
+<meta property="og:url" content="https://www.jetforcewashing.com/">
+<meta property="og:image" content="https://www.jetforcewashing.com/assets/after.jpg">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="JetForce Washing | Driveway &amp; Patio Cleaning in West London">
+<meta name="twitter:description" content="Professional pressure washing across West London. Free, no-obligation quotes.">
+<meta name="twitter:image" content="https://www.jetforcewashing.com/assets/after.jpg">
+
+<!-- Icons -->
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/site.webmanifest">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<!-- ================= HEADER ================= -->
+<header class="site-header" id="siteHeader">
+  <div class="wrap header-inner">
+    <a class="brand" href="#top" aria-label="JetForce Washing — home">
+      <img src="assets/logo.png" alt="" width="40" height="40" class="brand-mark">
+      <span class="brand-text">
+        <span class="brand-name">JetForce Washing</span>
+        <span class="brand-tag">Exterior cleaning &middot; West London</span>
+      </span>
+    </a>
+
+    <nav class="nav" id="nav" aria-label="Main">
+      <a href="#services">Services</a>
+      <a href="#results">Results</a>
+      <a href="#process">How it works</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#areas">Areas</a>
+      <a href="#faq">FAQ</a>
     </nav>
 
-    <!-- Mobile drawer menu -->
-    <div id="drawer" class="drawer">
-      <ul class="drawer-links">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#contact">Contact</a></li>
+    <div class="header-actions">
+      <a class="btn btn-quiet phone-link" href="tel:+447427982678">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+        <span>07427 982678</span>
+      </a>
+      <a class="btn btn-primary" href="#quote">Free quote</a>
+      <button class="nav-toggle" id="navToggle" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <span id="top"></span>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero">
+    <div class="hero-bg" aria-hidden="true"></div>
+    <div class="wrap hero-inner">
+      <div class="hero-copy">
+        <p class="eyebrow">Uxbridge &middot; Hayes &middot; Ealing &middot; Harrow &middot; Hillingdon</p>
+        <h1>Driveways and patios,<br><em>restored to like&#8209;new.</em></h1>
+        <p class="lede">
+          Professional pressure washing that lifts years of moss, algae, dirt and staining
+          off block paving, slabs, brickwork and decking. Resanding and sealing available
+          so the results last.
+        </p>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary btn-lg" href="#quote">Get a free quote</a>
+          <a class="btn btn-outline btn-lg" href="tel:+447427982678">
+            <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+            Call 07427 982678
+          </a>
+        </div>
+
+        <ul class="hero-points">
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" class="ico-check"><path d="m5 13 4 4L19 7"/></svg>Free, no&#8209;obligation quotes</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" class="ico-check"><path d="m5 13 4 4L19 7"/></svg>Resand &amp; seal available</li>
+          <li><svg viewBox="0 0 24 24" aria-hidden="true" class="ico-check"><path d="m5 13 4 4L19 7"/></svg>Domestic &amp; commercial</li>
+        </ul>
+      </div>
+
+      <div class="hero-media">
+        <figure class="hero-shot">
+          <img src="assets/after.jpg" alt="Block paving driveway after professional pressure washing" width="733" height="1100" loading="eager" fetchpriority="high">
+          <figcaption>Block paving, cleaned and resanded</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SERVICES ================= -->
+  <section class="section" id="services">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="kicker">What we do</p>
+        <h2>Exterior cleaning, done properly</h2>
+        <p class="section-lede">
+          The right pressure and the right nozzle for each surface — enough force to shift
+          the grime, never enough to damage what's underneath.
+        </p>
+      </header>
+
+      <div class="grid grid-4">
+        <article class="card reveal">
+          <span class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 20h18M5 20V9l7-5 7 5v11M9 20v-5h6v5"/></svg>
+          </span>
+          <h3>Driveway cleaning</h3>
+          <p>Block paving, concrete and tarmac. Moss, algae, oil spots and tyre marks lifted with a flat surface cleaner for an even finish — no stripes.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg>
+          </span>
+          <h3>Patios &amp; paths</h3>
+          <p>Indian sandstone, concrete slabs, decking and garden paths. Slippery green build-up removed so the surface is safe underfoot again.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M3 7h18M3 12h18M3 17h18M8 7v5M16 12v5"/></svg>
+          </span>
+          <h3>Walls &amp; fencing</h3>
+          <p>Brickwork, render and timber fencing cleaned at a lower, controlled pressure that clears the dirt without scarring the surface.</p>
+        </article>
+
+        <article class="card reveal">
+          <span class="card-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 3v4M12 17v4M3 12h4M17 12h4M6 6l2.5 2.5M15.5 15.5 18 18M18 6l-2.5 2.5M8.5 15.5 6 18"/></svg>
+          </span>
+          <h3>Resanding &amp; sealing</h3>
+          <p>Joints refilled with kiln-dried sand to lock the blocks together, then an optional sealer to slow regrowth and make future cleans easier.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RESULTS ================= -->
+  <section class="section section-alt" id="results">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="kicker">Results</p>
+        <h2>Before &amp; after</h2>
+        <p class="section-lede">The difference a proper clean makes to block paving.</p>
+      </header>
+
+      <!--
+        NOTE FOR JETFORCE: swap these two files for photos of one of your own jobs —
+        same driveway, same angle, taken before and after. Just replace
+        assets/before.jpg and assets/after.jpg; the layout crops them automatically.
+      -->
+      <div class="ba reveal">
+        <figure class="ba-item">
+          <span class="ba-tag ba-tag-before">Before</span>
+          <img src="assets/before.jpg" alt="Block paving covered in moss and algae before cleaning" width="733" height="1100" loading="lazy">
+        </figure>
+        <figure class="ba-item">
+          <span class="ba-tag ba-tag-after">After</span>
+          <img src="assets/after.jpg" alt="The same style of block paving clean and clear after pressure washing" width="733" height="1100" loading="lazy">
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROCESS ================= -->
+  <section class="section" id="process">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="kicker">How it works</p>
+        <h2>Simple from start to finish</h2>
+      </header>
+
+      <ol class="steps">
+        <li class="step reveal">
+          <span class="step-n">1</span>
+          <h3>Tell us about it</h3>
+          <p>Send a message or give us a ring. A rough size and a photo or two is usually all we need to get started.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">2</span>
+          <h3>Free quote</h3>
+          <p>You get a clear price up front with no obligation and no pressure. If it's a bigger job, we'll come and look first.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">3</span>
+          <h3>We clean</h3>
+          <p>We turn up when we say we will, protect the surrounding area, and work through the surface methodically.</p>
+        </li>
+        <li class="step reveal">
+          <span class="step-n">4</span>
+          <h3>Finish &amp; protect</h3>
+          <p>Everything is rinsed down and tidied. Add resanding or sealing and we'll finish those before we leave.</p>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= REVIEWS ================= -->
+  <section class="section section-alt" id="reviews">
+    <div class="wrap">
+      <header class="section-head reveal">
+        <p class="kicker">Reviews</p>
+        <h2>What customers say</h2>
+      </header>
+
+      <div class="grid grid-3">
+        <figure class="quote reveal">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote><p>An amazing transformation on our driveway — it genuinely looks brand new.</p></blockquote>
+          <figcaption>Sarah <span>Uxbridge</span></figcaption>
+        </figure>
+
+        <figure class="quote reveal">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote><p>On time, tidy and professional. Great value and a spotless finish.</p></blockquote>
+          <figcaption>Daniel <span>Hayes</span></figcaption>
+        </figure>
+
+        <figure class="quote reveal">
+          <div class="stars" role="img" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+          <blockquote><p>Our patio was green and slippery. Now it's bright and safe to walk on again.</p></blockquote>
+          <figcaption>Aisha <span>Ealing</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= AREAS ================= -->
+  <section class="section" id="areas">
+    <div class="wrap areas-inner">
+      <div class="reveal">
+        <p class="kicker">Coverage</p>
+        <h2>Areas we cover</h2>
+        <p class="section-lede">
+          We work across West London and the surrounding boroughs. Not sure if you're in
+          range? Ask — if we can get to you, we will.
+        </p>
+        <a class="btn btn-primary" href="#quote">Check your postcode</a>
+      </div>
+      <ul class="areas-list reveal">
+        <li>Uxbridge</li>
+        <li>Hayes</li>
+        <li>Ealing</li>
+        <li>Harrow</li>
+        <li>Hillingdon</li>
+        <li>Ruislip</li>
+        <li>Greenford</li>
+        <li>Northolt</li>
+        <li>Southall</li>
+        <li>West Drayton</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section section-alt" id="faq">
+    <div class="wrap wrap-narrow">
+      <header class="section-head reveal">
+        <p class="kicker">FAQ</p>
+        <h2>Common questions</h2>
+      </header>
+
+      <div class="faq reveal">
+        <details>
+          <summary>How much does it cost?</summary>
+          <p>It depends on the size of the area, the surface type and how much build-up there is. Send over the rough dimensions and a photo and we'll come back with a firm price — quotes are always free and there's no obligation.</p>
+        </details>
+        <details>
+          <summary>How long will it take?</summary>
+          <p>Most domestic driveways and patios are a single day's work. Resanding and sealing can add time, since the surface needs to dry properly first. We'll tell you what to expect when we quote.</p>
+        </details>
+        <details>
+          <summary>Do you need my water and electricity?</summary>
+          <p>An outside tap and a standard socket are ideal, and we'll always ask first. Let us know when you get in touch if access is difficult and we'll work around it.</p>
+        </details>
+        <details>
+          <summary>Will pressure washing damage my block paving?</summary>
+          <p>Not when it's done correctly. The risk comes from too much pressure held too close, which erodes the surface and blasts out the jointing sand. We match the pressure and nozzle to the surface, and resanding afterwards puts back what the wash takes out.</p>
+        </details>
+        <details>
+          <summary>What is resanding and sealing, and do I need it?</summary>
+          <p>Resanding refills the joints between blocks with kiln-dried sand, which keeps the paving stable and slows weed growth. Sealing adds a protective layer on top that helps resist staining and keeps it looking clean for longer. Neither is essential, but together they make the results last considerably longer.</p>
+        </details>
+        <details>
+          <summary>How often should it be done?</summary>
+          <p>For most West London driveways, every one to two years keeps things looking sharp. Shaded or north-facing areas green up faster and may want doing annually. Sealed surfaces tend to go longer between cleans.</p>
+        </details>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= QUOTE ================= -->
+  <section class="section" id="quote">
+    <div class="wrap quote-inner">
+      <div class="quote-copy reveal">
+        <p class="kicker">Get in touch</p>
+        <h2>Request your free quote</h2>
+        <p class="section-lede">
+          Tell us what needs cleaning and roughly how big it is. We'll get back to you
+          with a price — usually the same day.
+        </p>
+
+        <ul class="contact-list">
+          <li>
+            <span class="contact-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+            </span>
+            <span><strong>Call or text</strong><a href="tel:+447427982678">07427 982678</a></span>
+          </li>
+          <li>
+            <span class="contact-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M3 6h18v12H3zM3 6l9 7 9-7"/></svg>
+            </span>
+            <span><strong>Email</strong><a href="mailto:info@jetforcewashing.com">info@jetforcewashing.com</a></span>
+          </li>
+          <li>
+            <span class="contact-ico" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11z"/><circle cx="12" cy="10" r="2.6"/></svg>
+            </span>
+            <span><strong>Covering</strong>West London &amp; surrounding areas</span>
+          </li>
+        </ul>
+      </div>
+
+      <form class="form reveal" id="quoteForm" action="https://formspree.io/f/xgvldaze" method="POST">
+        <div class="field">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" autocomplete="name" required placeholder="Your name">
+        </div>
+
+        <div class="field-row">
+          <div class="field">
+            <label for="phone">Phone</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder="07000 000000">
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com">
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="service">What needs cleaning?</label>
+          <select id="service" name="service">
+            <option>Driveway</option>
+            <option>Patio or path</option>
+            <option>Walls, render or fencing</option>
+            <option>Resanding &amp; sealing</option>
+            <option>Something else</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label for="postcode">Postcode</label>
+          <input id="postcode" name="postcode" type="text" autocomplete="postal-code" placeholder="e.g. UB8">
+        </div>
+
+        <div class="field">
+          <label for="message">Details <span class="opt">(optional)</span></label>
+          <textarea id="message" name="message" rows="4" placeholder="Rough size of the area, surface type, and any access details."></textarea>
+        </div>
+
+        <input type="hidden" name="_subject" value="New quote request — jetforcewashing.com">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" aria-hidden="true" class="gotcha">
+
+        <button class="btn btn-primary btn-lg btn-block" type="submit" id="submitBtn">Send my request</button>
+        <p class="form-note">We'll only use your details to reply to this enquiry.</p>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div>
+      <a class="brand brand-footer" href="#top">
+        <img src="assets/logo.png" alt="" width="36" height="36" class="brand-mark">
+        <span class="brand-name">JetForce Washing</span>
+      </a>
+      <p class="footer-blurb">Professional exterior cleaning for homes and businesses across West London.</p>
+    </div>
+
+    <div>
+      <h4>Services</h4>
+      <ul class="footer-links">
+        <li><a href="#services">Driveway cleaning</a></li>
+        <li><a href="#services">Patios &amp; paths</a></li>
+        <li><a href="#services">Walls &amp; fencing</a></li>
+        <li><a href="#services">Resanding &amp; sealing</a></li>
       </ul>
     </div>
 
-    <main>
-      <!-- Hero section -->
-      <section id="home" class="section hero">
-        <div class="hero-content" data-animate>
-          <!-- Prominent site title; the bold weight emphasises the brand name. -->
-          <h1 class="hero-title">JetForce Washing</h1>
-          <!-- The subtitle has been removed per updated requirements. -->
-          <!-- Tagline will morph through three descriptors (Fast, Reliable, Affordable) via JavaScript -->
-          <p class="tagline" id="morph-tagline">Fast</p>
-          <a href="#contact" class="cta-button">Get a Free Quote</a>
-        </div>
-      </section>
+    <div>
+      <h4>Contact</h4>
+      <ul class="footer-links">
+        <li><a href="tel:+447427982678">07427 982678</a></li>
+        <li><a href="mailto:info@jetforcewashing.com">info@jetforcewashing.com</a></li>
+        <li><a href="#quote">Request a quote</a></li>
+      </ul>
+    </div>
 
-      <!-- About section with before/after images -->
-      <section id="about" class="section about">
-        <h2 class="section-title" data-animate>About</h2>
-        <p class="about-text" data-animate>
-          We are dedicated to revitalising your property’s exterior surfaces with our
-          top‑of‑the‑line jet washing solutions. Using advanced equipment and eco‑friendly
-          techniques, we restore driveways, patios, brickwork and more to their
-          original beauty.
-        </p>
-        <ul class="services-list" data-animate>
-          <li><i class="ph-light ph-check-circle"></i><span>Patios</span></li>
-          <li><i class="ph-light ph-check-circle"></i><span>Driveways</span></li>
-          <li><i class="ph-light ph-check-circle"></i><span>Walls & Fencing</span></li>
-          <li><i class="ph-light ph-check-circle"></i><span>Commercial & Residential</span></li>
-        </ul>
+    <div>
+      <h4>Areas</h4>
+      <p class="footer-areas">Uxbridge &middot; Hayes &middot; Ealing &middot; Harrow &middot; Hillingdon &middot; Ruislip &middot; Greenford &middot; Northolt &middot; Southall &middot; West Drayton</p>
+    </div>
+  </div>
 
-        <div class="before-after" data-animate>
-          <div class="card holo-card">
-            <span class="card-label">Before</span>
-            <img src="assets/before.jpg" alt="Before cleaning" />
-          </div>
-          <div class="card holo-card">
-            <span class="card-label">After</span>
-            <img src="assets/after.jpg" alt="After cleaning" />
-          </div>
-        </div>
-      </section>
+  <div class="wrap footer-bottom">
+    <p>&copy; <span id="year">2026</span> JetForce Washing. All rights reserved.</p>
+  </div>
+</footer>
 
-      <!-- Contact section -->
-      <section id="contact" class="section contact">
-        <h2 class="section-title" data-animate>Contact Us</h2>
-        <div class="contact-details" data-animate>
-          <div class="contact-item">
-            <!-- Phone icon (Phosphor light weight) -->
-            <i class="ph-light ph-phone"></i>
-            <a href="tel:07427982678">07427982678</a>
-          </div>
-          <div class="contact-item">
-            <!-- Envelope icon (Phosphor light weight) -->
-            <i class="ph-light ph-envelope"></i>
-            <a href="mailto:info@jetforcewashing.com">info@jetforcewashing.com</a>
-          </div>
-        </div>
-      </section>
-    </main>
+<!-- Sticky call bar on mobile -->
+<div class="callbar">
+  <a class="btn btn-outline" href="tel:+447427982678">
+    <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.58 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>
+    Call
+  </a>
+  <a class="btn btn-primary" href="#quote">Get a free quote</a>
+</div>
 
-    <footer class="footer" data-animate>
-      <p>© 2025 JetForce Washing. All rights reserved.</p>
-    </footer>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://www.jetforcewashing.com/#business",
+  "name": "JetForce Washing",
+  "description": "Professional pressure washing across West London — driveways, patios, walls and fencing, plus resanding and sealing.",
+  "url": "https://www.jetforcewashing.com/",
+  "image": "https://www.jetforcewashing.com/assets/logo.png",
+  "logo": "https://www.jetforcewashing.com/assets/logo.png",
+  "telephone": "+447427982678",
+  "email": "info@jetforcewashing.com",
+  "priceRange": "££",
+  "address": {
+    "@type": "PostalAddress",
+    "addressRegion": "West London",
+    "addressCountry": "GB"
+  },
+  "areaServed": [
+    { "@type": "City", "name": "Uxbridge" },
+    { "@type": "City", "name": "Hayes" },
+    { "@type": "City", "name": "Ealing" },
+    { "@type": "City", "name": "Harrow" },
+    { "@type": "City", "name": "Hillingdon" },
+    { "@type": "City", "name": "Ruislip" },
+    { "@type": "City", "name": "Greenford" },
+    { "@type": "City", "name": "Northolt" },
+    { "@type": "City", "name": "Southall" },
+    { "@type": "City", "name": "West Drayton" }
+  ],
+  "hasOfferCatalog": {
+    "@type": "OfferCatalog",
+    "name": "Exterior cleaning services",
+    "itemListElement": [
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Driveway cleaning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Patio and path cleaning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Wall and fencing cleaning" } },
+      { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Resanding and sealing" } }
+    ]
+  }
+}
+</script>
 
-    <script src="script.js"></script>
-  </body>
+<script src="script.js" defer></script>
+</body>
 </html>
