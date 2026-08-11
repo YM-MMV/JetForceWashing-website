@@ -116,7 +116,7 @@
       })
       .catch(function () {
         setStatus(
-          'Sorry, that didn’t send. Please call 07427 982678 or email info@jetforcewashing.com.',
+          'Sorry, that didn’t send. Please call or text us on 07427 982678.',
           'error'
         );
         if (button) {
