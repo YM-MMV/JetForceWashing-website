@@ -268,7 +268,7 @@ online as a public demo:
 
 Code is [MIT](LICENSE) — take any of it.
 
-Photography is **not** covered by that licence:
+Photography is **not** covered by that licence. Full details in [NOTICE](NOTICE):
 
 | Image | Author | Licence |
 |---|---|---|

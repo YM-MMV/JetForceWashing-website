@@ -1,0 +1,41 @@
+THIRD-PARTY AND NON-CODE ASSETS
+===============================
+
+The MIT licence in LICENSE covers the source code of this repository only.
+The following assets are not covered by it.
+
+
+PHOTOGRAPHY
+-----------
+
+assets/hero.jpg
+    "Pressure Washed Patio" by Stevie Rocco
+    Licensed CC BY 2.0 — https://creativecommons.org/licenses/by/2.0/
+    Source: https://www.flickr.com/photos/98336893@N00/7304361142
+
+assets/in-progress.jpg
+    "Driveway Cleaning" by Cvcuk
+    Licensed CC BY-SA 4.0 — https://creativecommons.org/licenses/by-sa/4.0/
+    Source: Wikimedia Commons
+
+assets/before.jpg, assets/after.jpg
+    Stock photography.
+
+Attribution for the two Creative Commons images is also displayed in the site
+footer, as those licences require. If you replace the photography with your
+own, remove that footer credits line and the "Illustrative photography" note in
+the results section.
+
+
+BRANDING
+--------
+
+assets/logo.png, the favicon set, and the JetForce Washing name are not covered
+by the MIT licence and remain the property of their owner.
+
+
+FONTS
+-----
+
+Plus Jakarta Sans is loaded at runtime from Google Fonts and is licensed under
+the SIL Open Font License 1.1. It is not redistributed in this repository.
