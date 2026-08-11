@@ -349,7 +349,7 @@ a:hover { color: var(--brand); }
 }
 
 /* ------------------------------------------------------ Before / after -- */
-.ba { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; }
+.ba { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
 .ba-item {
   position: relative;
   margin: 0;
@@ -373,8 +373,18 @@ a:hover { color: var(--brand); }
   color: #fff;
   backdrop-filter: blur(6px);
 }
-.ba-tag-before { background: rgba(11, 27, 43, .82); }
-.ba-tag-after  { background: rgba(21, 150, 189, .92); }
+/* Solid, not translucent: white label text has to clear AA regardless of
+   whatever part of the photo happens to sit behind the badge. */
+.ba-tag-before { background: var(--navy); }
+.ba-tag-during { background: var(--brand-deep); }
+.ba-tag-after  { background: #0f7b4f; }
+
+.ba-note {
+  margin: 20px 0 0;
+  font-size: .88rem;
+  color: var(--body);
+  font-style: italic;
+}
 
 /* ------------------------------------------------------------- Process -- */
 .steps {
@@ -626,6 +636,7 @@ a:hover { color: var(--brand); }
   font-size: .87rem;
 }
 .footer-bottom p { margin: 0; }
+.footer-bottom .credits { margin-top: 8px; font-size: .78rem; opacity: .72; }
 
 /* ------------------------------------------------------- Mobile callbar -- */
 .callbar {
@@ -696,6 +707,7 @@ a:hover { color: var(--brand); }
   .quote-inner { grid-template-columns: 1fr; gap: 36px; }
 
   .grid-3 { grid-template-columns: 1fr; }
+  .ba     { grid-template-columns: 1fr; }
 
   .callbar { display: flex; }
   body { padding-bottom: 78px; }
@@ -707,7 +719,6 @@ a:hover { color: var(--brand); }
 
   .grid-4 { grid-template-columns: 1fr; }
   .steps  { grid-template-columns: 1fr; gap: 26px; }
-  .ba     { grid-template-columns: 1fr; }
   .field-row { grid-template-columns: 1fr; gap: 0; }
   .areas-list { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
