@@ -103,6 +103,23 @@
     }
     setStatus('', '');
 
+    // Archived demo: the business has closed, so there is no endpoint to post
+    // to. Run the same loading state, then say plainly that nothing was sent
+    // rather than faking a confirmation.
+    if (form.hasAttribute('data-demo')) {
+      window.setTimeout(function () {
+        setStatus(
+          'This is an archived demo — the form works, but nothing was sent.',
+          'ok'
+        );
+        if (button) {
+          button.disabled = false;
+          button.textContent = idleLabel;
+        }
+      }, 700);
+      return;
+    }
+
     fetch(form.action, {
       method: 'POST',
       headers: { Accept: 'application/json' },
@@ -116,7 +133,7 @@
       })
       .catch(function () {
         setStatus(
-          'Sorry, that didn’t send. Please call or text us on 07427 982678.',
+          'Sorry, that didn’t send. Please call or text us on 07700 900123.',
           'error'
         );
         if (button) {
