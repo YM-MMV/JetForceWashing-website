@@ -389,7 +389,7 @@
 <!-- ============================================================== QUOTE == -->
 <section class="quote-sec" id="quote">
   <div class="wrap quote-grid">
-    <div class="quote-copy">
+    <div class="quote-main">
       <p class="sc fade-up">Get in touch</p>
       <h2 class="reveal-lines">
         <span class="l-mask"><span class="l-in">Request your</span></span>
@@ -414,16 +414,6 @@
           <div><dt>Covering</dt><dd>West London &amp; surrounding areas</dd></div>
         </div>
       </dl>
-
-      <figure class="stone-panel fade-up">
-        <video id="stoneVideo" muted loop playsinline preload="none"
-               poster="assets/stone-light-poster.jpg"
-               aria-label="Evening sunlight and tree shadows moving across a stone facade"
-               data-src="assets/stone-light.mp4"></video>
-        <figcaption>The light hits differently<br>on clean stone.</figcaption>
-      </figure>
-    </div>
-
     <!-- data-demo disables the network POST. The business has closed, so the
          original Formspree endpoint has been removed rather than left live
          collecting real enquiries. Everything else is real: native validation,
@@ -434,18 +424,16 @@
         <label for="name">Name</label>
       </div>
 
-      <div class="field-row">
-        <div class="field">
+      <div class="field field-half">
           <input id="phone" name="phone" type="tel" autocomplete="tel" required placeholder=" ">
           <label for="phone">Phone</label>
-        </div>
-        <div class="field">
+      </div>
+      <div class="field field-half">
           <input id="email" name="email" type="email" autocomplete="email" required placeholder=" ">
           <label for="email">Email</label>
-        </div>
       </div>
 
-      <div class="field field-select">
+      <div class="field field-half field-select">
         <select id="service" name="service">
           <option>Driveway</option>
           <option>Patio or path</option>
@@ -456,7 +444,7 @@
         <label for="service">What needs cleaning?</label>
       </div>
 
-      <div class="field">
+      <div class="field field-half">
         <input id="postcode" name="postcode" type="text" autocomplete="postal-code" placeholder=" ">
         <label for="postcode">Postcode (e.g. UB8)</label>
       </div>
@@ -476,6 +464,17 @@
       <p class="form-note">We'll only use your details to reply to this enquiry.</p>
       <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
     </form>
+    </div>
+
+    <div class="quote-aside">
+      <figure class="stone-panel fade-up">
+        <video id="stoneVideo" muted loop playsinline preload="none"
+               poster="assets/stone-light-poster.jpg"
+               aria-label="Evening sunlight and tree shadows moving across a stone facade"
+               data-src="assets/stone-light.mp4"></video>
+        <figcaption>The light hits differently<br>on clean stone.</figcaption>
+      </figure>
+    </div>
   </div>
 </section>
 
