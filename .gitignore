@@ -14,3 +14,6 @@
 
 # Local tooling
 .claude/
+
+# Kombai design canvas workspace (local tool state)
+.kombai/
