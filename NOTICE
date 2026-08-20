@@ -21,10 +21,22 @@ assets/in-progress.jpg
 assets/before.jpg, assets/after.jpg
     Stock photography.
 
+
+VIDEO
+-----
+
+assets/stone-light.mp4, assets/stone-light-poster.jpg
+    Evening light on a stone facade, by Zeynep Gul Ceylan.
+    Licensed under the Pexels License — https://www.pexels.com/license/
+    Source: https://www.pexels.com/video/18735298/
+    Self-hosted rather than hotlinked from the Pexels CDN.
+
 Attribution for the two Creative Commons images is also displayed in the site
-footer, as those licences require. If you replace the photography with your
-own, remove that footer credits line and the "Illustrative photography" note in
-the results section.
+footer, as those licences require. The video is credited alongside them; the
+Pexels License does not require attribution, but it is given anyway.
+
+If you replace the media with your own, remove that footer credits line and the
+"Illustrative photography" note in the results section.
 
 
 BRANDING
@@ -37,5 +49,6 @@ by the MIT licence and remain the property of their owner.
 FONTS
 -----
 
-Plus Jakarta Sans is loaded at runtime from Google Fonts and is licensed under
-the SIL Open Font License 1.1. It is not redistributed in this repository.
+Playfair Display and Outfit are loaded at runtime from Google Fonts. Both are
+licensed under the SIL Open Font License 1.1. Neither is redistributed in this
+repository.

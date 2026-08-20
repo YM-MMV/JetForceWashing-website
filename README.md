@@ -4,12 +4,14 @@
 
 **A marketing site for a local pressure-washing business — designed, built, and shipped solo.**
 
-No framework, no build step, no dependencies. 1,457 lines of hand-written HTML, CSS and JavaScript,
+No framework, no build step, no dependencies. 1,800 lines of hand-written HTML, CSS and JavaScript,
 deployed continuously to GitHub Pages.
 
 [**→ View the live site**](https://ym-mmv.github.io/JetForceWashing-website/)
 
 </div>
+
+![The JetForce Washing homepage](.github/media/hero.jpg)
 
 > [!NOTE]
 > **This is an archived portfolio piece.** JetForce Washing is no longer trading. The site is kept
@@ -47,6 +49,10 @@ out anything with a server or a monthly bill.
 
 The result is a static site with **zero runtime dependencies** that costs nothing to host.
 
+The current look came later, from a design canvas mockup — an editorial serif treatment that
+replaced an earlier, more conventional blue-gradient version. Porting it meant rebuilding its
+Tailwind/GSAP/Lenis toolchain by hand and correcting its colour contrast; both are covered below.
+
 ## At a glance
 
 | | |
@@ -54,23 +60,28 @@ The result is a static site with **zero runtime dependencies** that costs nothin
 | **Stack** | HTML, CSS, JavaScript. No framework, no bundler, no preprocessor |
 | **Dependencies** | None. No `package.json`, no `node_modules`, no lockfile |
 | **Build step** | None. The repo root *is* the deployed artifact |
-| **Source size** | 526 lines HTML · 747 CSS · 145 JS · 39 (404 page) |
-| **Page weight** | ~949 KB over 9 requests — 900 KB of that is photography |
+| **Source size** | 583 lines HTML · 783 CSS · 372 JS · 65 (404 page) |
+| **Page weight** | 576 KB over 8 requests on load; 3.3 MB / 11 once the lazy video is reached |
 | **Third-party runtime** | One: Google Fonts. No analytics, no trackers, no cookies |
 | **Deploy** | GitHub Actions → GitHub Pages on every push to `main` |
-| **Contrast** | Every text/background pair verified against WCAG AA |
+| **Contrast** | 119 text elements audited against their real composited backgrounds — 0 failures |
 
 ## Design system
 
-Built around a cyan-teal sampled directly out of the logo artwork (`#379FBF`), on a deep navy base.
+Warm sand ground, charcoal text, an editorial serif paired with a geometric sans — a deliberate
+move away from the generic blue-gradient look most trade sites land on.
 
-![Palette and type scale, with measured contrast ratios](.github/media/design-system.svg)
+![Palette, measured contrast ratios and type scale](.github/media/design-system.svg)
 
-Two colours do the heavy lifting, and the split between them is deliberate. `#1596bd` reads better
-but only manages **3.43:1** on white — fine for large display text, a WCAG failure for button
-labels. So buttons and links use the darker `#0d7a9b` at **4.91:1**, and the brighter tone is
-reserved for accents and the hero gradient, where the text is large enough to qualify. Getting this
-wrong is the single most common accessibility bug on marketing sites.
+The orange is **split into two roles**, and that split is the whole point. `#ff7a3d` is the colour
+the design is built around, but it manages only **2.40:1** as text on sand and **2.59:1** behind a
+white button label — both well under the 4.5:1 floor. Rather than abandon it or ship an
+inaccessible page, it is restricted to things with no glyphs on them: the blurred hero blobs, the
+drawn walkway, section rules, the fine dot texture. Anything carrying text uses `#c74405` instead,
+at **4.57:1** on sand and **4.93:1** behind white.
+
+Same reasoning for steel `#c4ccd3`: at 1.51:1 it can tint a section band or fill a pill, and it is
+never allowed near a letterform.
 
 ## Engineering notes
 
@@ -88,12 +99,76 @@ inline script in `<head>` adds:
 ```
 
 ```css
-.js .reveal { opacity: 0; transform: translateY(18px); }
-.js .reveal.is-visible { opacity: 1; transform: none; }
+.js .l-in    { transform: translateY(115%); }
+.js .is-in .l-in { transform: translateY(0); }
+.js .fade-up { opacity: 0; transform: translateY(30px); }
 ```
 
-No JavaScript, no `.js` class, no hidden content. The hero opts out of reveal entirely so
-above-the-fold content paints immediately rather than waiting on `IntersectionObserver`.
+No JavaScript, no `.js` class, no hidden content — every heading, photo and paragraph renders. The
+hero is revealed on a short timer rather than by the observer, so above-the-fold content paints
+immediately instead of waiting for a scroll event that may never come.
+
+</details>
+
+<details>
+<summary><b>Rebuilding the design's motion without GSAP</b></summary>
+
+<br>
+
+The design was handed over as a canvas mockup running Tailwind's browser runtime plus **GSAP,
+ScrollTrigger and Lenis** from CDNs — around 100 KB of libraries and four external requests, for a
+site whose entire point is that it has no dependencies. All of it is hand-written here instead.
+
+Most of it is ordinary `IntersectionObserver` work. The two *scrubbed* effects — the polaroids
+fanning apart and the walkway drawing itself — need continuous scroll position rather than a
+one-shot trigger, so they share a single `requestAnimationFrame` loop. The loop is not always
+running: an observer flips each effect active only while its section is near the viewport, and the
+loop stops itself when nothing is active.
+
+```js
+function step() {
+  var anyActive = false;
+  for (var i = 0; i < scrubbers.length; i++) {
+    var s = scrubbers[i];
+    if (!s.active) continue;
+    anyActive = true;
+    var r = s.el.getBoundingClientRect();
+    s.fn(clamp01((vh * s.start - r.top) / (vh * s.start - (-r.height + vh * s.end))));
+  }
+  ticking = false;
+  if (anyActive) kick();      // idle whenever nothing is on screen
+}
+```
+
+Each effect just maps `0..1` onto CSS custom properties, so the transforms stay in the stylesheet:
+
+```js
+pols[i].style.setProperty('--x', x + 'px');
+pols[i].style.setProperty('--r', r + 'deg');
+```
+
+The fan-out distance is derived from the container width rather than the mockup's fixed ±350px,
+which would overflow a phone. Under `prefers-reduced-motion` the polaroids are placed in their
+final fanned position once, with no scroll coupling at all.
+
+</details>
+
+<details>
+<summary><b>A 2.2 MB video that doesn't cost 2.2 MB</b></summary>
+
+<br>
+
+The closing panel plays a loop of evening light moving across stone. It is self-hosted rather than
+hotlinked from the stock provider's CDN — hotlinking makes the page depend on someone else's
+uptime and hotlink policy.
+
+It carries no `src` in the markup. An observer swaps `data-src` in only when the panel is within
+200px of the viewport, so the initial page load is **576 KB over 8 requests**; the video is only
+fetched by visitors who scroll that far. Under `prefers-reduced-motion` the `data-src` is dropped
+entirely and the poster frame stays put — the video never loads and never plays.
+
+The caption is white text over moving footage, where no fixed colour pair can be verified. A
+gradient scrim under it guarantees **18.9:1** at its darkest regardless of the frame behind.
 
 </details>
 
@@ -136,9 +211,12 @@ height and blew the hero apart.
 <br>
 
 The original photography totalled **6 MB** — around 3.5 MB for a single driveway shot. Resized to a
-sensible maximum dimension and recompressed, the same four images come to **~900 KB**, with no
+sensible maximum dimension and recompressed, the same four images come to **~830 KB**, with no
 visible quality loss at the sizes they're displayed at. Below-the-fold images are `loading="lazy"`;
 the hero is `fetchpriority="high"` since it's the LCP element.
+
+The video is the largest single asset at 2.2 MB, which is why it is never part of the initial
+load — see the lazy-loading note above.
 
 </details>
 
@@ -192,21 +270,41 @@ rather than a dead end.
 
 ## Accessibility
 
-Not an afterthought, and not assumed — the contrast ratios were computed rather than eyeballed.
-Two real failures turned up that way and were fixed:
+Not an afterthought, and not eyeballed. A script walks every text-bearing element, resolves the
+**real composited background** by compositing each translucent ancestor in turn, and checks the
+ratio against the threshold for that element's own font size and weight.
 
-| Element | Before | After |
+Run against the design as drawn, it found **11 failures**. The mockup leans on low-opacity muted
+text — `/45` through `/65` — which looks refined and is often unreadable:
+
+| Element | As designed | Fixed |
 |---|---|---|
-| Primary button (white on brand) | 3.43:1 ❌ | **4.91:1** ✅ |
-| Hero gradient, bright end | 2.33:1 ❌ | **3.43:1** ✅ *(large text)* |
-| "After" badge (white on brand) | 3.43:1 ❌ | **5.29:1** ✅ |
-| Body copy | — | **6.92:1** ✅ |
-| Footer text on navy | — | **8.92:1** ✅ |
+| Form field labels | 2.82:1 ❌ | **5.45:1** ✅ |
+| Contact detail labels | 2.82:1 ❌ | **5.45:1** ✅ |
+| Footer meta line | 3.74:1 ❌ | **5.69:1** ✅ |
+| Service card copy | 3.88:1 ❌ | **5.45:1** ✅ |
+| Process step copy | 3.88:1 ❌ | **5.45:1** ✅ |
+| FAQ answers | 3.99:1 ❌ | **5.39:1** ✅ |
+| Results note link | 3.83:1 ❌ | **5.04:1** ✅ |
+| Bright orange as text | 2.40:1 ❌ | withdrawn from text entirely |
+| White on bright orange | 2.59:1 ❌ | withdrawn from buttons entirely |
+| Video caption | unverifiable | **18.9:1** ✅ *(gradient scrim)* |
+
+Each replacement opacity was solved for rather than guessed — the minimum alpha that clears 4.5:1
+**on the specific background that element sits on**, since the sand ground, the steel-tinted bands
+and the charcoal footer all need different values. The shipped values sit a little above those
+minimums, so the figures above are the ratios as measured on the deployed page, not the targets.
+
+Re-audited after the fixes: **0 failures across 119 elements**, tightest passing pair 4.56:1.
 
 Also in place: a skip link, semantic landmarks, visible `:focus-visible` rings, `aria-expanded` and
 `aria-label` kept in sync on the mobile menu toggle, `aria-live` status messaging on the form,
-keyboard dismissal of the nav, decorative SVGs marked `aria-hidden`, and a full
-`prefers-reduced-motion` path.
+`aria-selected` on the review tabs, keyboard dismissal of the nav, decorative SVGs marked
+`aria-hidden`, and a full `prefers-reduced-motion` path that switches the scrubbed animations off
+rather than merely speeding them up.
+
+The review carousel also stops rotating on hover, on focus, and when the tab is hidden — nothing
+slides out from under someone mid-sentence.
 
 ## Deployment
 
@@ -240,11 +338,15 @@ Then open <http://localhost:4173>.
 ```
 ├── index.html              # The entire site
 ├── styles.css              # All styling; design tokens as CSS custom properties
-├── script.js               # Nav, sticky header, scroll reveals, form
+├── script.js               # Nav, reveals, scrubbed animations, carousel, FAQ, form
 ├── 404.html                # Not-found page
-├── assets/                 # Logo and photography
+├── assets/
+│   ├── hero.jpg before.jpg in-progress.jpg after.jpg
+│   ├── stone-light.mp4     # Lazy-loaded closing panel
+│   └── stone-light-poster.jpg
 ├── sitemap.xml robots.txt site.webmanifest
 ├── .nojekyll               # Serve files as-is; don't run Jekyll
+├── NOTICE                  # Media licences and attribution
 └── .github/workflows/deploy.yml
 ```
 
@@ -268,11 +370,12 @@ online as a public demo:
 
 Code is [MIT](LICENSE) — take any of it.
 
-Photography is **not** covered by that licence. Full details in [NOTICE](NOTICE):
+Photography and video are **not** covered by that licence. Full details in [NOTICE](NOTICE):
 
 | Image | Author | Licence |
 |---|---|---|
 | `assets/hero.jpg` | Stevie Rocco | [CC BY 2.0](https://creativecommons.org/licenses/by/2.0/) |
 | `assets/in-progress.jpg` | Cvcuk | [CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/) |
+| `assets/stone-light.mp4` | Zeynep Gül Ceylan | [Pexels licence](https://www.pexels.com/license/) |
 
 The JetForce Washing name and logo are not covered either.
