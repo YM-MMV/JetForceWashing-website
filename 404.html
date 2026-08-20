@@ -5,35 +5,61 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Page not found | JetForce Washing</title>
 <meta name="robots" content="noindex">
+
 <!-- Absolute project paths, not relative: GitHub serves this file for any missing
      URL, at any depth, so relative paths would resolve against the bad URL. -->
 <link rel="icon" href="/JetForceWashing-website/favicon.ico" sizes="any">
 <link rel="icon" type="image/png" sizes="32x32" href="/JetForceWashing-website/favicon-32x32.png">
 <link rel="apple-touch-icon" href="/JetForceWashing-website/apple-touch-icon.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Outfit:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/JetForceWashing-website/styles.css">
+
 <style>
-  .oops { min-height: 78vh; display: grid; place-items: center; text-align: center; padding: 60px 0; }
-  .oops h1 { font-size: clamp(2.2rem, 6vw, 3.4rem); margin-bottom: 14px; }
-  .oops .code { font-size: .8rem; font-weight: 800; letter-spacing: .16em;
-                text-transform: uppercase; color: var(--brand-deep); margin-bottom: 12px; }
+  .oops {
+    position: relative;
+    min-height: 100vh;
+    display: grid; place-items: center;
+    text-align: center;
+    padding: 60px 0;
+    overflow: hidden;
+  }
+  .oops-blob {
+    position: absolute; pointer-events: none;
+    width: 460px; height: 460px;
+    background: rgba(255, 122, 61, .12);
+    left: 50%; top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .oops-inner { position: relative; z-index: 1; }
+  .oops h1 { font-size: clamp(42px, 6vw, 74px); margin: 14px 0 20px; }
+  .oops h1 em { font-style: italic; color: var(--sat-ink); }
   .oops p { max-width: 46ch; margin-inline: auto; }
-  .oops .btn { margin-top: 22px; }
+  .oops-actions { display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; margin-top: 34px; }
+  @media (max-width: 620px) { .oops-actions .btn { width: 100%; justify-content: center; } }
 </style>
 </head>
+
 <body>
-  <main class="oops">
-    <div class="wrap">
-      <p class="code">Error 404</p>
-      <h1>We couldn’t find that page</h1>
-      <p>The link may be out of date or mistyped. Everything lives on the homepage — or give us a ring and we’ll point you the right way.</p>
-      <p>
-        <a class="btn btn-primary btn-lg" href="/JetForceWashing-website/">Back to the homepage</a>
-        <a class="btn btn-outline btn-lg" href="tel:+447700900123">Call 07700 900123</a>
-      </p>
+<main class="oops noise">
+  <div class="oops-blob pebble" aria-hidden="true"></div>
+  <div class="wrap oops-inner">
+    <p class="sc">Error 404</p>
+    <h1>That page has <em>washed away.</em></h1>
+    <p class="lede">
+      The link may be out of date or mistyped. Everything lives on the homepage —
+      or give us a ring and we'll point you the right way.
+    </p>
+    <div class="oops-actions">
+      <a class="btn btn-solid" href="/JetForceWashing-website/">
+        Back to the homepage
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="ico"><path d="M5 12h14M13 6l6 6-6 6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="tel:+447700900123">Call 07700 900123</a>
     </div>
-  </main>
+  </div>
+</main>
 </body>
 </html>
